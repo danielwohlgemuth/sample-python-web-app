@@ -1,5 +1,6 @@
 import unittest
-from application import application
+from moto import mock_aws
+from application import application, create_table
 
 class TestHello(unittest.TestCase):
 
@@ -10,6 +11,13 @@ class TestHello(unittest.TestCase):
     def test_hello(self):
         rv = self.application.get('/')
         self.assertEqual(rv.status, '200 OK')
+
+    @mock_aws
+    def test_signup(self):
+        create_table()
+        rv = self.application.post('/signup', data={ "email": "test@example.com" })
+        self.assertEqual(rv.status, '201 CREATED')
+        self.assertEqual(rv.data, b'{"email": "test@example.com"}')
 
 if __name__ == '__main__':
     import xmlrunner

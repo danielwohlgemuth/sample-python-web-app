@@ -3,18 +3,20 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.11
+      python: 3.12
     commands:
       - echo Entered the install phase...
       - pip install pipenv
-      - pipenv install
+      - pipenv install --dev
     finally:
       - echo This always runs even if the update or install command fails
   build:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
-      - pipenv run python -m unittest # not an interactive session so we need to run
+      - pipenv run coverage run -m unittest
+      - pipenv run coverage json
+      - cat coverage.json
     finally:
       - echo This always runs even if the install command fails
   post_build:

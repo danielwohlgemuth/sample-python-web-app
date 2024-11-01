@@ -56,10 +56,10 @@ def signup():
     for item in request.form:
         signup_data[item] = request.form[item]
 
-    # try:
-    #     store_in_dynamo(signup_data)
-    # except client.exceptions.ConditionalCheckFailedException:
-    #     return Response("", status=409, mimetype='application/json')
+    try:
+        store_in_dynamo(signup_data)
+    except client.exceptions.ConditionalCheckFailedException:
+        return Response("", status=409, mimetype='application/json')
 
     return Response(json.dumps(signup_data), status=201, mimetype='application/json')
 
@@ -69,26 +69,25 @@ def store_in_dynamo(signup_data):
     table.put_item(
         Item=signup_data
     )
-    print("PutItem succeeded:")
 
 
-# def create_table():
-#     ddb.create_table(
-#         TableName=application.config['STARTUP_SIGNUP_TABLE'], 
-#         AttributeDefinitions=[
-#             {
-#                 'AttributeName': 'email',
-#                 'AttributeType': 'S'
-#             }
-#         ],
-#         KeySchema=[
-#             {
-#                 'AttributeName': 'email',
-#                 'KeyType': 'HASH'
-#             }
-#         ], 
-#         BillingMode='PAY_PER_REQUEST'
-#     )
+def create_table():
+    ddb.create_table(
+        TableName=application.config['STARTUP_SIGNUP_TABLE'], 
+        AttributeDefinitions=[
+            {
+                'AttributeName': 'email',
+                'AttributeType': 'S'
+            }
+        ],
+        KeySchema=[
+            {
+                'AttributeName': 'email',
+                'KeyType': 'HASH'
+            }
+        ], 
+        BillingMode='PAY_PER_REQUEST'
+    )
 
 
 # def init_db():

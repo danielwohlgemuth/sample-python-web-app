@@ -4,6 +4,8 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+coverage = "*"
+moto = "*"
 
 [packages]
 flask = "*"
@@ -11,4 +13,4 @@ boto3 = "*"
 uwsgi = "*"
 
 [requires]
-python_version = "3.11"
+python_version = "3.12"
