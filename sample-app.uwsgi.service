@@ -1,6 +1,6 @@
 [Unit]
 Description=uWSGI Sample App
-After=syslog.target,network.target,nginx.target
+After=journal.target,network.target,nginx.target
 Requires=network.target,nginx.target
 
 [Service]
