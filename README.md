@@ -20,6 +20,8 @@ AWS Architecture
 
 ![AWS Architecture](/assets/sample-python-app.png)
 
+[AWS Architecture diagram file](https://app.diagrams.net/?title=sample-python-app#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fdanielwohlgemuth%2Fsample-python-web-app%2Frefs%2Fheads%2Fmain%2Fassets%2Fsample-python-app.drawio)
+
 ### Code Coverage
 
 The code has a few simple tests using the standard `unittest` module available in Python.
