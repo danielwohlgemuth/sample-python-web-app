@@ -16,6 +16,10 @@ DynamoDB Items
 
 ![dynamodb items](/assets/dynamodb-items.png)
 
+AWS Architecture
+
+![AWS Architecture](/assets/sample-python-app.png)
+
 ### Code Coverage
 
 The code has a few simple tests using the standard `unittest` module available in Python.
