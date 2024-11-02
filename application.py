@@ -19,6 +19,7 @@ import json
 
 import flask
 from flask import request, Response
+from utils import store_in_dynamo
 
 import boto3
 
@@ -62,13 +63,6 @@ def signup():
         return Response("", status=409, mimetype='application/json')
 
     return Response(json.dumps(signup_data), status=201, mimetype='application/json')
-
-
-def store_in_dynamo(signup_data):
-    table = ddb.Table(application.config['STARTUP_SIGNUP_TABLE'])
-    table.put_item(
-        Item=signup_data
-    )
 
 
 if __name__ == '__main__':
