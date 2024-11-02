@@ -15,6 +15,7 @@ phases:
       - echo Entered the build phase...
       - echo Build started on `date`
       - pipenv run coverage run -m unittest
+      - pipenv run coverage report
       - pipenv run coverage json
       - cat coverage.json
     finally:
