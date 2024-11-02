@@ -1,6 +1,8 @@
 import unittest
 from moto import mock_aws
-from application import application, create_table
+from application import application
+from utils import create_table
+
 
 class TestHello(unittest.TestCase):
 

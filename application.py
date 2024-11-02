@@ -71,33 +71,5 @@ def store_in_dynamo(signup_data):
     )
 
 
-def create_table():
-    ddb.create_table(
-        TableName=application.config['STARTUP_SIGNUP_TABLE'], 
-        AttributeDefinitions=[
-            {
-                'AttributeName': 'email',
-                'AttributeType': 'S'
-            }
-        ],
-        KeySchema=[
-            {
-                'AttributeName': 'email',
-                'KeyType': 'HASH'
-            }
-        ], 
-        BillingMode='PAY_PER_REQUEST'
-    )
-
-
-# def init_db():
-#     try:
-#         print("Check DynamoDB table")
-#         response = client.describe_table(TableName=application.config['STARTUP_SIGNUP_TABLE'])
-#     except client.exceptions.ResourceNotFoundException as err:
-#         print("DynamoDB table doesn't exist, please create as part of the guide")
-#         # create_table()
-
 if __name__ == '__main__':
-    init_db()
     application.run(host='0.0.0.0')
