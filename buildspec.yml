@@ -16,11 +16,16 @@ phases:
       - echo Build started on `date`
       - pipenv run coverage run --omit "tests/*,application.config" -m unittest
       - pipenv run coverage report
-      - pipenv run coverage json
-      - cat coverage.json
+      - pipenv run coverage xml
     finally:
       - echo This always runs even if the install command fails
   post_build:
     commands:
       - echo Entered the post_build phase...
       - echo Build complete on `date`
+
+reports:
+  sample-python-app:
+    files:
+      - coverage.xml
+    file-format: COBERTURAXML
